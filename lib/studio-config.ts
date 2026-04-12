@@ -308,30 +308,43 @@ A crisp premium Shopify-quality studio product image.`;
       return `${masterPrompt}
 
 TASK:
-Change ONLY the outfit color to ${optionConfig.promptLabel}.
-Keep the face, hair, body, and pose exactly the same.
+Recolor ONLY the visible main outfit to ${optionConfig.promptLabel}.
+Keep the face, hair, skin, body, background, and pose exactly the same.
 
 STRICT COLOR EDIT RULES:
-- Change only the garment color
+- Change only the color of the primary clothing item shown in the photo
+- If multiple garments are visible, recolor only the main hero garment and leave every other item unchanged
 - Do not change garment design
+- Do not change garment fit, length, cut, drape, layering, or styling
 - Do not change fabric texture
 - Do not change stitching
 - Do not change folds
-- Do not change trim, buttons, zippers, hems, or garment structure
+- Do not change trim, buttons, zippers, hems, lace, embroidery, beading, or garment structure
+- Do not remove or add sleeves, collars, pockets, or embellishments
 - Do not change skin tone
 - Do not change hair
 - Do not change face
 - Do not change pose
 - Do not change body shape
-- Do not change background
+- Do not change hands, legs, shoes, accessories, props, or background
+- Do not replace the entire outfit with a different garment
+- Do not restyle the image
 
 COLOR RULES:
 - Apply the new color evenly and realistically across the outfit
 - Preserve natural highlights, shadows, depth, wrinkles, and material texture
 - Keep the garment looking like the same physical clothing item
+- Preserve realistic fabric sheen, weave, and tonal variation from the original image
+- Keep edge boundaries clean where the outfit meets skin or background
 - Do not invent new patterns
 - Do not add shine unless already present in the original fabric
 - Do not oversaturate
+- Avoid patchy recoloring, missed sections, color spill onto skin, and color spill onto the background
+
+TARGET COLOR:
+- The final garment color should read clearly as ${optionConfig.promptLabel}
+- Keep the tone premium, believable, and suitable for ecommerce
+- Match all visible sections of the same garment to the same color family
 
 FINAL LOOK:
 The exact same outfit and photo, but recolored naturally to ${optionConfig.promptLabel}, with premium ecommerce realism.`;
@@ -397,11 +410,21 @@ A realistic premium occasion photo of the same model in the same outfit, placed 
 export function getGenerationSize(action: StudioAction) {
   switch (action) {
     case "clean-studio":
-    case "change-color":
     case "upgrade-model":
     case "create-campaign":
       return "1024x1536" as const;
+    case "change-color":
+      return "1024x1024" as const;
     default:
       return "1024x1024" as const;
+  }
+}
+
+export function getGenerationQuality(action: StudioAction) {
+  switch (action) {
+    case "change-color":
+      return "high" as const;
+    default:
+      return "medium" as const;
   }
 }

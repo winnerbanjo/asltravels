@@ -2,7 +2,11 @@ import { openai } from "@/lib/openai";
 import { geminiModel } from "@/lib/gemini";
 import { getSession } from "@/lib/auth";
 import { refundUserCredit, reserveUserCredit } from "@/lib/credits";
-import { buildPrompt, getGenerationSize } from "@/lib/studio-config";
+import {
+  buildPrompt,
+  getGenerationQuality,
+  getGenerationSize,
+} from "@/lib/studio-config";
 import type { StudioAction, StudioOption } from "@/lib/types";
 
 export async function POST(req: Request) {
@@ -100,7 +104,9 @@ A crisp premium ecommerce studio image.`;
 
     console.log("PROMPT PREVIEW:", prompt.slice(0, 400));
     const size = action ? getGenerationSize(action) : "1024x1536";
+    const quality = action ? getGenerationQuality(action) : "medium";
     console.log("OPENAI SIZE:", size);
+    console.log("OPENAI QUALITY:", quality);
 
     let imageBase64: string | null = null;
     let provider = "none";
@@ -114,7 +120,7 @@ A crisp premium ecommerce studio image.`;
         prompt,
         image: editImage,
         size,
-        quality: "medium",
+        quality,
         input_fidelity: "high",
         background: "opaque",
       });
