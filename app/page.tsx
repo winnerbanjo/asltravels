@@ -15,6 +15,7 @@ import {
 import type { StudioAction, StudioOption } from "@/lib/types";
 import { UploadDropzone } from "@/components/upload-dropzone";
 import { useStudio } from "@/components/studio-provider";
+import { withBasePath } from "@/lib/client-paths";
 
 type RecentImage = {
   id: string;
@@ -55,7 +56,7 @@ export default function HomePage() {
     }
 
     void (async () => {
-      const response = await fetch("/api/images/recent");
+      const response = await fetch(withBasePath("/api/images/recent"));
 
       if (!response.ok) {
         return;
@@ -115,7 +116,7 @@ export default function HomePage() {
       const formData = new FormData();
       formData.append("file", file);
 
-      const response = await fetch("/api/upload", {
+      const response = await fetch(withBasePath("/api/upload"), {
         method: "POST",
         body: formData,
       });

@@ -7,6 +7,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { withBasePath } from "@/lib/client-paths";
 import type { AuthUser } from "@/lib/types";
 
 type AuthContextValue = {
@@ -28,7 +29,7 @@ export function AuthProvider({
   const [user, setUser] = useState<AuthUser | null>(initialUser);
 
   const refreshUser = async () => {
-    const response = await fetch("/api/auth/session");
+    const response = await fetch(withBasePath("/api/auth/session"));
 
     if (!response.ok) {
       return;

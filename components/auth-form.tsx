@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useAuth } from "@/components/auth-provider";
+import { withBasePath } from "@/lib/client-paths";
 import type { AuthUser } from "@/lib/types";
 
 type AuthFormProps = {
@@ -28,7 +29,7 @@ export function AuthForm({ mode }: AuthFormProps) {
     setLoading(true);
 
     try {
-      const response = await fetch(`/api/auth/${mode}`, {
+      const response = await fetch(withBasePath(`/api/auth/${mode}`), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -5,6 +5,7 @@ const config = [
   {
     ignores: [
       ".next/**",
+      ".next_*/**",
       ".next_broken_*/**",
       ".next_corrupt_*/**",
       ".next_runtimefix_*/**",

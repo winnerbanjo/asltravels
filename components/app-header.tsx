@@ -5,13 +5,14 @@ import { useRouter } from "next/navigation";
 import { Sparkles } from "lucide-react";
 import toast from "react-hot-toast";
 import { useAuth } from "@/components/auth-provider";
+import { withBasePath } from "@/lib/client-paths";
 
 export function AppHeader() {
   const router = useRouter();
   const { user, isAuthenticated, setUser } = useAuth();
 
   const handleLogout = async () => {
-    const response = await fetch("/api/auth/logout", { method: "POST" });
+    const response = await fetch(withBasePath("/api/auth/logout"), { method: "POST" });
 
     if (!response.ok) {
       toast.error("Something went wrong. Please try again.");

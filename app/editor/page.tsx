@@ -13,6 +13,7 @@ import {
   getOptionConfig,
   optionsByAction,
 } from "@/lib/studio-config";
+import { withBasePath } from "@/lib/client-paths";
 
 export default function EditorPage() {
   const router = useRouter();
@@ -84,7 +85,7 @@ export default function EditorPage() {
     setShowRetry(false);
 
     try {
-      const response = await fetch("/api/generate", {
+      const response = await fetch(withBasePath("/api/generate"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
