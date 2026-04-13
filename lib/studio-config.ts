@@ -38,8 +38,8 @@ export const studioActions: ActionConfig[] = [
   },
   {
     id: "upgrade-model",
-    title: "Change Face",
-    description: "Swap facial identity while keeping the outfit and pose",
+    title: "Change Face Beta",
+    description: "Try a new face direction, with occasional imperfections",
     icon: Sparkles,
   },
   {
@@ -278,6 +278,9 @@ NON-NEGOTIABLE RULES:
 - Preserve garment shape, stitching, folds, texture, fit, silhouette, branding, seams, buttons, zippers, prints, and proportions
 - Preserve the original pose, body position, camera angle, crop, framing, and composition
 - Preserve the subject identity unless the task explicitly says to change the face
+- Preserve the original face exactly for every task except explicit face-change mode
+- Keep facial symmetry, facial proportions, eye alignment, nose shape, mouth shape, jawline, and expression stable unless the task explicitly says to change the face
+- Never deform, melt, warp, duplicate, asymmetrically distort, or blur facial features
 - Do not add props, accessories, jewelry, extra garments, text, patterns, logos, or background objects
 - Do not stylize the image
 - Do not create an illustration, CGI look, or fantasy beauty retouching
@@ -288,6 +291,7 @@ QUALITY RULES:
 - Improve lighting evenly and professionally
 - Improve contrast and clarity subtly
 - Keep skin tones natural
+- Keep the face balanced, believable, and commercially usable
 - Keep edges clean around the subject
 - Preserve full framing with comfortable headroom and breathing room around the subject
 - Keep the full head, hair, shoulders, arms, and lower body in frame whenever they are present in the source image
@@ -312,6 +316,7 @@ Do not redesign the clothing.
 Do not change the pose.
 Do not change the body.
 Do not change the face.
+Do not regenerate, beautify, reshape, or reinterpret the face.
 Do not change the camera angle.
 Only improve the background, lighting, subject separation, and overall polish.
 
@@ -357,6 +362,7 @@ STRICT COLOR EDIT RULES:
 - Do not change skin tone
 - Do not change hair
 - Do not change face
+- Do not regenerate, beautify, reshape, or reinterpret the face
 - Do not change pose
 - Do not change body shape
 - Do not change hands, legs, shoes, accessories, props, or background
@@ -396,6 +402,8 @@ STRICT RULES:
 - Keep the image photorealistic
 - Replace only the facial identity with a clean generic commercial avatar look
 - Keep the new face clearly African, with Nigerian or West African facial features when suitable
+- Keep the new face balanced, symmetrical, and believable
+- Avoid distorted eyes, uneven facial proportions, malformed mouths, warped cheeks, broken jawlines, and uncanny skin texture
 - Do not change the outfit
 - Do not change the body
 - Do not change the background unless needed for realism
@@ -406,7 +414,7 @@ STRICT RULES:
 - Keep the complete outfit visible without tight cropping
 
 PRIORITY:
-The outfit must remain identical to the source image and the new face must look naturally integrated.
+The outfit must remain identical to the source image and the new face must look naturally integrated, balanced, and usable.
 
 FINAL LOOK:
 A believable premium fashion ecommerce photo with the same outfit and body, but a different locked-in face direction.`;
@@ -426,6 +434,7 @@ STRICT RULES:
 - Keep styling minimal, aspirational, and brand-safe
 - Do not clutter the frame
 - Do not change the face, body, or identity
+- Do not regenerate, beautify, reshape, or reinterpret the face
 - Do not change the hairstyle
 - Do not crop the head, shoulders, or lower garment
 - Keep the subject fully visible with breathing room around the body

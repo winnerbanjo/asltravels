@@ -371,6 +371,11 @@ export default function EditorPage() {
               </div>
             ) : (
               <div className="space-y-3">
+                {action === "upgrade-model" ? (
+                  <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+                    Face change is beta. If the result looks distorted or imbalanced, skip this action and use background or color edits instead.
+                  </div>
+                ) : null}
                 {editorOptions.map((editorOption) => {
                   const active = editorOption.id === option;
 

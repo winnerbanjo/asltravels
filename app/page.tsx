@@ -330,7 +330,7 @@ export default function HomePage() {
                       : action.id === "change-color"
                           ? "Change color"
                           : action.id === "upgrade-model"
-                            ? "Try another model"
+                            ? "Change face beta"
                             : "Create occasion shot";
 
                     return (
