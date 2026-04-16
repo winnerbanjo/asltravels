@@ -11,6 +11,8 @@ const inter = Inter({
   display: "swap",
 });
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "ASL Travels",
   description: "Launch a fully branded travel agency in minutes with booking infrastructure, payments, and operations already handled.",

@@ -1,6 +1,8 @@
 import { AdminCreditForm } from "@/components/admin-credit-form";
 import { getAdminDashboardData, requireAdminSession } from "@/lib/admin";
 
+export const dynamic = "force-dynamic";
+
 function formatDate(value: string) {
   return new Intl.DateTimeFormat("en-GB", {
     dateStyle: "medium",
