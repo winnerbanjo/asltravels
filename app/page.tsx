@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
+import { AtSign, Globe, MapPin, MessageCircle, MessagesSquare, Phone } from "lucide-react";
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
 import { AslLogo } from "@/components/asl-logo";
@@ -118,22 +119,46 @@ const revenueStreams = [
   "Platform add-ons for domains, design, campaigns, leads, and branding",
 ];
 
+const socialLinks = [
+  {
+    href: "https://wa.me/2348140257174",
+    label: "WhatsApp",
+    icon: MessageCircle,
+  },
+  {
+    href: "https://instagram.com/asltravels",
+    label: "Instagram",
+    icon: AtSign,
+  },
+  {
+    href: "https://facebook.com/asltravels",
+    label: "Facebook",
+    icon: MessagesSquare,
+  },
+  {
+    href: "https://linkedin.com/company/asltravels",
+    label: "LinkedIn",
+    icon: Globe,
+  },
+];
+
 const footerLinks = {
   Product: [
     { href: "/#how-it-works", label: "How it works" },
     { href: "/#platform", label: "Platform" },
     { href: "/#pricing", label: "Pricing" },
     { href: "/#revenue", label: "Revenue model" },
+    { href: "/knowledge-base", label: "Knowledge base" },
   ],
   Company: [
-    { href: "#", label: "About" },
-    { href: "#", label: "Blog" },
-    { href: "#", label: "Contact" },
+    { href: "/knowledge-base", label: "Support center" },
+    { href: "tel:08140257174", label: "Call us" },
+    { href: "https://wa.me/2348140257174", label: "WhatsApp" },
   ],
   Legal: [
-    { href: "#", label: "Terms" },
-    { href: "#", label: "Privacy" },
-    { href: "#", label: "Disclaimer" },
+    { href: "/terms", label: "Terms" },
+    { href: "/privacy", label: "Privacy" },
+    { href: "/disclaimer", label: "Disclaimer" },
   ],
 };
 
@@ -533,12 +558,44 @@ export default function HomePage() {
 
       <footer className="border-t border-[#DCE3F7] bg-white">
         <div className="page-shell py-12">
-          <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+          <div className="grid gap-10 lg:grid-cols-[1.35fr_1fr_1fr_1fr]">
             <div className="max-w-sm">
               <AslLogo compact />
               <p className="mt-4 text-sm leading-7 text-[#667085]">
                 Infrastructure for modern travel businesses.
               </p>
+              <div className="mt-6 space-y-3 text-sm text-[#667085]">
+                <a
+                  href="https://maps.google.com/?q=7+Chief+Tajudeen+Odubiyi+St,+Ilasamaja,+Lagos+102214"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-start gap-3 transition hover:text-[#0B1C5A]"
+                >
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#1736B6]" />
+                  <span>7 Chief Tajudeen Odubiyi St, Ilasamaja, Lagos 102214</span>
+                </a>
+                <a
+                  href="tel:08140257174"
+                  className="flex items-center gap-3 transition hover:text-[#0B1C5A]"
+                >
+                  <Phone className="h-4 w-4 shrink-0 text-[#1736B6]" />
+                  <span>0814 025 7174</span>
+                </a>
+              </div>
+              <div className="mt-6 flex flex-wrap gap-3">
+                {socialLinks.map(({ href, label, icon: Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={label}
+                    className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#DCE3F7] bg-[#F8FAFD] text-[#1736B6] transition hover:border-[#1736B6] hover:bg-[#EEF3FF]"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
+                ))}
+              </div>
             </div>
             {Object.entries(footerLinks).map(([title, links]) => (
               <div key={title}>
@@ -559,8 +616,16 @@ export default function HomePage() {
               </div>
             ))}
           </div>
-          <div className="mt-12 border-t border-[#DCE3F7] pt-6 text-sm text-[#667085]">
-            © 2026 ASL Travels
+          <div className="mt-12 grid gap-4 border-t border-[#DCE3F7] pt-6 text-sm text-[#667085] md:grid-cols-[minmax(0,1fr)_auto] md:items-center">
+            <div className="space-y-1">
+              <p>© 2026 ASL Travels</p>
+              <p>
+                Merchant platform, support information, and legal disclosures for ASL Travels.
+              </p>
+            </div>
+            <div className="text-left md:text-right">
+              <p>Knowledge base, policies, and support links are available below the main navigation.</p>
+            </div>
           </div>
         </div>
       </footer>
