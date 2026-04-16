@@ -113,12 +113,6 @@ const comparisonRows = [
   ["API access", "No", "No", "No", "Yes"],
 ];
 
-const revenueStreams = [
-  "Subscription revenue from monthly merchant payments",
-  "Booking commission that scales with ticket sales",
-  "Platform add-ons for domains, design, campaigns, leads, and branding",
-];
-
 const reviews = [
   {
     name: "Amaka D.",
@@ -168,7 +162,6 @@ const footerLinks = {
     { href: "/#how-it-works", label: "How it works" },
     { href: "/#platform", label: "Platform" },
     { href: "/#pricing", label: "Pricing" },
-    { href: "/#revenue", label: "Revenue model" },
     { href: "/knowledge-base", label: "Knowledge base" },
   ],
   Company: [
@@ -547,12 +540,12 @@ export default function HomePage() {
         <FadeIn delay={0.14} className="mt-10 rounded-[2rem] border border-[#DCE3F7] bg-white p-8 shadow-[0_16px_48px_rgba(13,32,93,0.05)]">
           <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-center">
             <div>
-              <p className="text-sm uppercase tracking-[0.18em] text-[#1736B6]">Revenue projection</p>
+              <p className="text-sm uppercase tracking-[0.18em] text-[#1736B6]">Start with clarity</p>
               <p className="mt-3 text-3xl font-semibold tracking-[-0.04em] text-[#0B1C5A] md:text-4xl">
-                1,000 merchants × ₦35,000 average plan = ₦35 million monthly
+                Choose the plan that matches your stage.
               </p>
               <p className="mt-3 text-base text-[#667085]">
-                Plus booking commissions and platform add-ons.
+                Start with the free trial, then move into Starter, Growth, Pro Agency, or Enterprise as your travel business expands.
               </p>
             </div>
             <Link
@@ -563,40 +556,6 @@ export default function HomePage() {
             </Link>
           </div>
         </FadeIn>
-      </section>
-
-      <section id="revenue" className="page-shell py-16 md:py-24">
-        <div className="grid gap-6 lg:grid-cols-[320px_minmax(0,1fr)] lg:items-center">
-          <FadeIn>
-            <div className="relative h-80 overflow-hidden rounded-[2rem] border border-[#DCE3F7] bg-white shadow-[0_16px_48px_rgba(13,32,93,0.06)]">
-              <Image
-                src={travelerPortrait}
-                alt="Traveler with luggage and camera"
-                fill
-                className="object-cover"
-                sizes="320px"
-              />
-            </div>
-          </FadeIn>
-          <FadeIn delay={0.08}>
-            <div className="rounded-[2rem] border border-[#DCE3F7] bg-white p-8">
-              <p className="text-sm uppercase tracking-[0.18em] text-[#1736B6]">Revenue model</p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-[#0B1C5A] md:text-5xl">
-                Three revenue streams.
-              </h2>
-              <div className="mt-8 grid gap-3">
-                {revenueStreams.map((item) => (
-                  <div
-                    key={item}
-                    className="rounded-2xl bg-[#F4F7FF] px-4 py-4 text-base font-medium text-[#0B1C5A]"
-                  >
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </FadeIn>
-        </div>
       </section>
 
       <section className="page-shell py-16 md:py-24">
