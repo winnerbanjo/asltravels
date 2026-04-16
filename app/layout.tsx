@@ -12,8 +12,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Nile AI Studio",
-  description: "Fix your product photo and make it look like a professional shoot.",
+  title: "ASL Travels",
+  description: "Launch a fully branded travel agency in minutes with booking infrastructure, payments, and operations already handled.",
 };
 
 export default async function RootLayout({

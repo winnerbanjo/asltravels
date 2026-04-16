@@ -62,25 +62,26 @@ export function AuthForm({ mode }: AuthFormProps) {
   return (
     <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center">
       <div className="space-y-6">
-        <span className="rounded-full border border-gray-200 px-3 py-1 text-sm font-medium text-gray-600">
-          {isSignup ? "Create account" : "Welcome back"}
+        <span className="rounded-full border border-[#D7E0EA] px-3 py-1 text-sm font-medium text-[#2563EB]">
+          {isSignup ? "Start your agency" : "Welcome back"}
         </span>
         <div className="space-y-4">
-          <h1 className="text-4xl font-semibold tracking-tight text-[#0A0A0A]">
+          <h1 className="text-4xl font-semibold tracking-tight text-[#0B1C2C]">
             {isSignup
-              ? "Start designing without the guesswork"
-              : "Pick up where you left off"}
+              ? "Launch your branded travel business"
+              : "Sign in to manage your agency"}
           </h1>
-          <p className="max-w-md text-base text-gray-500">
-            Nile keeps the workflow simple: upload, choose a clean preset, and get client-ready visuals fast.
+          <p className="max-w-md text-base leading-7 text-[#6B7280]">
+            ASL gives you the infrastructure. You keep the brand, customer
+            relationship, and margins.
           </p>
         </div>
-        <div className="space-y-3 rounded-xl border border-gray-200 bg-gray-50 p-5">
-          <p className="text-sm font-medium text-[#0A0A0A]">Built for everyday designers</p>
-          <ul className="space-y-2 text-sm text-gray-500">
-            <li>Save edits to your account</li>
-            <li>Reuse color and studio presets quickly</li>
-            <li>No prompts, no technical setup</li>
+        <div className="space-y-3 rounded-[1.5rem] border border-[#E5E7EB] bg-[linear-gradient(180deg,_#ffffff_0%,_#f8fbff_100%)] p-5">
+          <p className="text-sm font-medium text-[#0B1C2C]">Included from day one</p>
+          <ul className="space-y-2 text-sm text-[#6B7280]">
+            <li>Branded booking website</li>
+            <li>Flights, hotels, and car rentals</li>
+            <li>Payments and markup controls</li>
           </ul>
         </div>
       </div>
@@ -89,7 +90,7 @@ export function AuthForm({ mode }: AuthFormProps) {
         <form className="space-y-5" onSubmit={handleSubmit}>
           {isSignup ? (
             <div className="space-y-2">
-              <label className="text-sm font-medium text-[#0A0A0A]" htmlFor="name">
+              <label className="text-sm font-medium text-[#0B1C2C]" htmlFor="name">
                 Full name
               </label>
               <input
@@ -99,15 +100,15 @@ export function AuthForm({ mode }: AuthFormProps) {
                 onChange={(event) =>
                   setForm((current) => ({ ...current, name: event.target.value }))
                 }
-                className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none transition focus:border-black"
-                placeholder="Jane Designer"
+                className="w-full rounded-xl border border-[#E5E7EB] px-4 py-3 outline-none transition focus:border-[#0B1C2C]"
+                placeholder="Jane Okafor"
                 required
               />
             </div>
           ) : null}
 
           <div className="space-y-2">
-            <label className="text-sm font-medium text-[#0A0A0A]" htmlFor="email">
+            <label className="text-sm font-medium text-[#0B1C2C]" htmlFor="email">
               Email
             </label>
             <input
@@ -117,14 +118,14 @@ export function AuthForm({ mode }: AuthFormProps) {
               onChange={(event) =>
                 setForm((current) => ({ ...current, email: event.target.value }))
               }
-              className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none transition focus:border-black"
+              className="w-full rounded-xl border border-[#E5E7EB] px-4 py-3 outline-none transition focus:border-[#0B1C2C]"
               placeholder="you@example.com"
               required
             />
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium text-[#0A0A0A]" htmlFor="password">
+            <label className="text-sm font-medium text-[#0B1C2C]" htmlFor="password">
               Password
             </label>
             <input
@@ -134,7 +135,7 @@ export function AuthForm({ mode }: AuthFormProps) {
               onChange={(event) =>
                 setForm((current) => ({ ...current, password: event.target.value }))
               }
-              className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none transition focus:border-black"
+              className="w-full rounded-xl border border-[#E5E7EB] px-4 py-3 outline-none transition focus:border-[#0B1C2C]"
               placeholder="At least 8 characters"
               minLength={8}
               required
@@ -144,22 +145,22 @@ export function AuthForm({ mode }: AuthFormProps) {
           <button
             type="submit"
             disabled={loading}
-            className="inline-flex w-full items-center justify-center rounded-lg bg-black px-5 py-3 text-sm font-medium text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+            className="inline-flex w-full items-center justify-center rounded-full bg-[#0B1C2C] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#132d46] disabled:cursor-not-allowed disabled:opacity-60"
           >
             {loading
               ? isSignup
                 ? "Creating account..."
                 : "Logging in..."
               : isSignup
-                ? "Create account"
+                ? "Start your agency"
                 : "Log in"}
           </button>
 
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-[#6B7280]">
             {isSignup ? "Already have an account?" : "Need an account?"}{" "}
             <Link
               href={isSignup ? "/login" : "/signup"}
-              className="font-medium text-[#0A0A0A]"
+              className="font-medium text-[#0B1C2C]"
             >
               {isSignup ? "Log in" : "Sign up"}
             </Link>

@@ -4,7 +4,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #0a0a0a;
+  --foreground: #0b1c2c;
   --muted: #6b7280;
   --border: #e5e7eb;
 }
@@ -21,6 +21,7 @@ body {
   margin: 0;
   background: var(--background);
   color: var(--foreground);
+  font-family: var(--font-inter), sans-serif;
   font-feature-settings: "ss01" on, "cv02" on, "cv03" on;
 }
 
@@ -41,7 +42,7 @@ a {
 }
 
 .surface-card {
-  @apply rounded-xl border border-gray-200 bg-white shadow-sm;
+  @apply rounded-[1.75rem] border border-[#E5E7EB] bg-white shadow-sm;
 }
 
 .page-transition {
