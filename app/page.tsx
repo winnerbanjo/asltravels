@@ -119,6 +119,27 @@ const revenueStreams = [
   "Platform add-ons for domains, design, campaigns, leads, and branding",
 ];
 
+const reviews = [
+  {
+    name: "Amaka D.",
+    role: "Diaspora travel seller",
+    quote:
+      "I went from taking bookings manually in WhatsApp to running a branded travel site clients actually trust.",
+  },
+  {
+    name: "Tosin A.",
+    role: "Agency operator",
+    quote:
+      "The setup felt faster than expected. We focused on customers while the booking flow already worked out of the box.",
+  },
+  {
+    name: "Daniel E.",
+    role: "Growing merchant",
+    quote:
+      "What sold me was the margin control. It feels like my own travel business, not someone else’s platform.",
+  },
+];
+
 const socialLinks = [
   {
     href: "https://wa.me/2348140257174",
@@ -398,6 +419,45 @@ export default function HomePage() {
                   {step.title}
                 </h3>
                 <p className="mt-3 text-base leading-7 text-[#667085]">{step.description}</p>
+              </motion.div>
+            </FadeIn>
+          ))}
+        </div>
+      </section>
+
+      <section className="page-shell py-16 md:py-24">
+        <FadeIn className="max-w-2xl">
+          <p className="text-sm font-medium uppercase tracking-[0.22em] text-[#1736B6]">
+            Proof of concept
+          </p>
+          <h2 className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-[#0B1C5A] md:text-5xl">
+            What merchants say after launch.
+          </h2>
+          <p className="mt-4 text-lg leading-8 text-[#667085]">
+            Sample reviews for early-stage trust and layout testing.
+          </p>
+        </FadeIn>
+
+        <div className="mt-12 grid gap-5 lg:grid-cols-3">
+          {reviews.map((review, index) => (
+            <FadeIn key={review.name} delay={index * 0.06}>
+              <motion.div
+                className="h-full rounded-[1.75rem] border border-[#DCE3F7] bg-white p-6 shadow-[0_12px_40px_rgba(13,32,93,0.05)]"
+                whileHover={{ y: -4, boxShadow: "0 16px 36px rgba(13,32,93,0.06)" }}
+                transition={{ duration: 0.2 }}
+              >
+                <div className="flex items-center gap-1 text-[#1736B6]">
+                  <span>★</span>
+                  <span>★</span>
+                  <span>★</span>
+                  <span>★</span>
+                  <span>★</span>
+                </div>
+                <p className="mt-5 text-lg leading-8 text-[#0B1C5A]">&ldquo;{review.quote}&rdquo;</p>
+                <div className="mt-8">
+                  <p className="text-base font-semibold text-[#0B1C5A]">{review.name}</p>
+                  <p className="mt-1 text-sm text-[#667085]">{review.role}</p>
+                </div>
               </motion.div>
             </FadeIn>
           ))}
