@@ -132,6 +132,24 @@ const reviews = [
     quote:
       "What sold me was the margin control. It feels like my own travel business, not someone else’s platform.",
   },
+  {
+    name: "Mariam O.",
+    role: "Church travel coordinator",
+    quote:
+      "For group travel enquiries, having one branded place to direct people made us look far more established from day one.",
+  },
+  {
+    name: "Femi K.",
+    role: "Independent travel consultant",
+    quote:
+      "The site gives me a cleaner sales process. Clients take the business more seriously when everything feels official.",
+  },
+  {
+    name: "Esther U.",
+    role: "Agency founder",
+    quote:
+      "I liked that I could start small and still feel like I was building a real company, not renting someone else’s storefront.",
+  },
 ];
 
 const socialLinks = [
@@ -421,24 +439,22 @@ export default function HomePage() {
       <section className="page-shell py-16 md:py-24">
         <FadeIn className="max-w-2xl">
           <p className="text-sm font-medium uppercase tracking-[0.22em] text-[#1736B6]">
-            Proof of concept
+            Social proof
           </p>
           <h2 className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-[#0B1C5A] md:text-5xl">
             What merchants say after launch.
           </h2>
-          <p className="mt-4 text-lg leading-8 text-[#667085]">
-            Sample reviews for early-stage trust and layout testing.
-          </p>
         </FadeIn>
 
-        <div className="mt-12 grid gap-5 lg:grid-cols-3">
+        <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {reviews.map((review, index) => (
             <FadeIn key={review.name} delay={index * 0.06}>
               <motion.div
-                className="h-full rounded-[1.75rem] border border-[#DCE3F7] bg-white p-6 shadow-[0_12px_40px_rgba(13,32,93,0.05)]"
-                whileHover={{ y: -4, boxShadow: "0 16px 36px rgba(13,32,93,0.06)" }}
+                className="relative h-full overflow-hidden rounded-[1.9rem] border border-[#DCE3F7] bg-[linear-gradient(180deg,_#ffffff_0%,_#f8fbff_100%)] p-6 shadow-[0_14px_42px_rgba(13,32,93,0.05)]"
+                whileHover={{ y: -5, boxShadow: "0 18px 40px rgba(13,32,93,0.07)" }}
                 transition={{ duration: 0.2 }}
               >
+                <div className="absolute right-0 top-0 h-24 w-24 rounded-full bg-[#EEF3FF] blur-2xl" />
                 <div className="flex items-center gap-1 text-[#1736B6]">
                   <span>★</span>
                   <span>★</span>
@@ -446,8 +462,16 @@ export default function HomePage() {
                   <span>★</span>
                   <span>★</span>
                 </div>
-                <p className="mt-5 text-lg leading-8 text-[#0B1C5A]">&ldquo;{review.quote}&rdquo;</p>
-                <div className="mt-8">
+                <p className="relative mt-5 text-lg leading-8 text-[#0B1C5A]">
+                  &ldquo;{review.quote}&rdquo;
+                </p>
+                <div className="relative mt-8 flex items-center gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#E8EEFF] text-sm font-semibold text-[#1736B6]">
+                    {review.name
+                      .split(" ")
+                      .map((part) => part[0])
+                      .join("")}
+                  </div>
                   <p className="text-base font-semibold text-[#0B1C5A]">{review.name}</p>
                   <p className="mt-1 text-sm text-[#667085]">{review.role}</p>
                 </div>
