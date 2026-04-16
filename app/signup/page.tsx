@@ -1,16 +1,6 @@
-import { redirect } from "next/navigation";
 import { AuthForm } from "@/components/auth-form";
-import { getSession } from "@/lib/auth";
 
-export const dynamic = "force-dynamic";
-
-export default async function SignupPage() {
-  const user = await getSession();
-
-  if (user) {
-    redirect("/");
-  }
-
+export default function SignupPage() {
   return (
     <main className="page-shell py-12 md:py-16">
       <AuthForm mode="signup" />
