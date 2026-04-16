@@ -37,6 +37,14 @@ const heroFrames = [
   },
 ];
 
+const merchantBenefits = [
+  "Branded booking website included",
+  "Flight inventory ready from day one",
+  "Merchant pricing and markup control",
+  "Customer payment flow already handled",
+  "Scale from starter to agency operations",
+];
+
 const steps = [
   {
     number: "01",
@@ -223,11 +231,20 @@ function FadeIn({
 
 export default function HomePage() {
   const [heroIndex, setHeroIndex] = useState(0);
+  const [benefitIndex, setBenefitIndex] = useState(0);
 
   useEffect(() => {
     const interval = window.setInterval(() => {
       setHeroIndex((current) => (current + 1) % heroFrames.length);
     }, 2800);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setBenefitIndex((current) => (current + 1) % merchantBenefits.length);
+    }, 2200);
 
     return () => window.clearInterval(interval);
   }, []);
@@ -346,16 +363,26 @@ export default function HomePage() {
       </section>
 
       <section className="page-shell py-10 md:py-12">
-        <FadeIn className="rounded-[2rem] border border-[#DCE3F7] bg-white px-6 py-8 text-center shadow-[0_12px_40px_rgba(13,32,93,0.05)] md:px-10">
-          <p className="text-2xl font-semibold tracking-[-0.04em] text-[#0B1C5A] md:text-3xl">
-            Affordable for beginners.
-          </p>
-          <p className="mt-3 text-2xl font-semibold tracking-[-0.04em] text-[#0B1C5A] md:text-3xl">
-            Profitable for ASL.
-          </p>
-          <p className="mt-3 text-2xl font-semibold tracking-[-0.04em] text-[#0B1C5A] md:text-3xl">
-            Scalable with merchant growth.
-          </p>
+        <FadeIn className="rounded-[2rem] border border-[#DCE3F7] bg-white px-6 py-6 shadow-[0_12px_40px_rgba(13,32,93,0.05)] md:px-10">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <p className="text-sm font-medium uppercase tracking-[0.22em] text-[#1736B6]">
+              Merchant benefits
+            </p>
+            <div className="min-h-[2rem] text-left md:text-right">
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={merchantBenefits[benefitIndex]}
+                  initial={{ opacity: 0, y: 14, filter: "blur(4px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, y: -14, filter: "blur(4px)" }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className="text-xl font-semibold tracking-[-0.03em] text-[#0B1C5A] md:text-2xl"
+                >
+                  {merchantBenefits[benefitIndex]}
+                </motion.p>
+              </AnimatePresence>
+            </div>
+          </div>
         </FadeIn>
       </section>
 
