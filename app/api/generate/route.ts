@@ -1,5 +1,5 @@
-import { openai } from "@/lib/openai";
-import { geminiModel } from "@/lib/gemini";
+import { getOpenAIClient } from "@/lib/openai";
+import { getGeminiModel } from "@/lib/gemini";
 import { getSession } from "@/lib/auth";
 import { refundUserCredit, reserveUserCredit } from "@/lib/credits";
 import { connectToDatabase } from "@/lib/db";
@@ -114,6 +114,7 @@ export async function POST(req: Request) {
 
     try {
       console.log("Trying OpenAI...");
+      const openai = getOpenAIClient();
 
       const openaiRes = await openai.images.edit({
         model: "gpt-image-1",
@@ -143,6 +144,7 @@ export async function POST(req: Request) {
 
       try {
         console.log("Trying Gemini...");
+        const geminiModel = getGeminiModel();
 
         const geminiRes = await geminiModel.generateContent([
           prompt,
